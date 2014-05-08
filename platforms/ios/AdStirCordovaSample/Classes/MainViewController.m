@@ -21,11 +21,16 @@
 //  MainViewController.h
 //  AdStirCordovaSample
 //
-//  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright ___ORGANIZATIONNAME___ ___YEAR___. All rights reserved.
+//  Copyright UNITED, Inc. 2014. All rights reserved.
 //
 
 #import "MainViewController.h"
+
+#import "AdstirMraidView.h"
+
+@interface MainViewController()
+@property (nonatomic, strong) AdstirMraidView *adView;
+@end
 
 @implementation MainViewController
 
@@ -68,7 +73,33 @@
     // View defaults to full size.  If you want to customize the view's size, or its subviews (e.g. webView),
     // you can do so here.
 
+    AdstirAdSize adSize = kAdstirAdSize320x50; // If you want use another size, please see AdstirMraidView.h
+    
+	CGFloat adstirWidth = adSize.size.width;
+	CGFloat adstirHeight = adSize.size.height;
+	
+	CGFloat adstirX = (self.webView.frame.origin.x + self.webView.frame.size.width - adstirWidth) / 2;
+	CGFloat adstirY = self.webView.frame.origin.y + self.webView.frame.size.height - adstirHeight;
+	
+	CGRect rect;
+	rect.origin = self.webView.frame.origin;
+	rect.size = self.webView.frame.size;
+	rect.size.height = rect.size.height - adstirHeight;
+	self.webView.frame = rect;
+	
+    // Please replace MEDIA-ID and SPOT-NO 0 to yours.
+    self.adView = [[AdstirMraidView alloc] initWithAdSize:adSize origin:CGPointMake(adstirX, adstirY) media:@"MEDIA-ID" spot:0/* SPOT-NO */];
+	self.adView.intervalTime = ADSTIRWEBVIEW_DEFAULT_INTERVAL;
+	[self.view addSubview:self.adView];
+    
     [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[self.adView removeFromSuperview];
+	self.adView = nil;
+	[super viewWillDisappear:animated];
 }
 
 - (void)viewDidLoad

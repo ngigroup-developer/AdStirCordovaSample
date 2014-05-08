@@ -21,8 +21,7 @@
 //  AppDelegate.m
 //  AdStirCordovaSample
 //
-//  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright ___ORGANIZATIONNAME___ ___YEAR___. All rights reserved.
+//  Copyright UNITED, Inc. 2014. All rights reserved.
 //
 
 #import "AppDelegate.h"
