@@ -26,7 +26,7 @@
 
 #import "MainViewController.h"
 
-#import "AdstirMraidView.h"
+#import <AdstirAds/AdstirAds.h>
 
 @interface MainViewController()
 @property (nonatomic, strong) AdstirMraidView *adView;
