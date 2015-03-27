@@ -15,5 +15,4 @@ DerivedData
 *.ipa
 *.xcuserstate
 
-AdStirSDK/AdstirMraidView.h
-AdStirSDK/libAdstirWebView.a
+AdStirSDK/AdstirAds.framework
